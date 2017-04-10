@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `BrotliStateStruct` struct in crate `brotli_sys`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, BrotliStateStruct">
+
+    <title>brotli_sys::BrotliStateStruct - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>brotli_sys</a></p><script>window.sidebarCurrent = {name: 'BrotliStateStruct', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>brotli_sys</a>::<wbr><a class="struct" href=''>BrotliStateStruct</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../src/brotli_sys/lib.rs.html#33-119' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'><div class="docblock attributes">#[repr(C)]
+</div>pub struct BrotliStateStruct {
+    pub state: <a class="type" href="../brotli_sys/type.BrotliRunningState.html" title="type brotli_sys::BrotliRunningState">BrotliRunningState</a>,
+    pub loop_counter: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub br: <a class="struct" href="../brotli_sys/struct.BrotliBitReader.html" title="struct brotli_sys::BrotliBitReader">BrotliBitReader</a>,
+    pub alloc_func: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../brotli_sys/type.brotli_alloc_func.html" title="type brotli_sys::brotli_alloc_func">brotli_alloc_func</a>&gt;,
+    pub free_func: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../brotli_sys/type.brotli_free_func.html" title="type brotli_sys::brotli_free_func">brotli_free_func</a>&gt;,
+    pub memory_manager_opaque: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="enum" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/enum.c_void.html" title="enum libc::c_void">c_void</a>,
+    pub buffer_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub pos: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub max_backward_distance: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub max_backward_distance_minus_custom_dict_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub max_distance: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub ringbuffer_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub ringbuffer_mask: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub dist_rb_idx: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub dist_rb: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a>,
+    pub error_code: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub sub_loop_counter: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub ringbuffer: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub ringbuffer_end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub htree_command: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a>,
+    pub context_lookup1: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub context_lookup2: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub context_map_slice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub dist_context_map_slice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub literal_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a>,
+    pub insert_copy_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a>,
+    pub distance_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a>,
+    pub block_type_trees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a>,
+    pub block_len_trees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a>,
+    pub trivial_literal_context: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub distance_context: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub meta_block_remaining_len: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub block_length_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub block_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a>,
+    pub num_block_types: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a>,
+    pub block_type_rb: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 6]</a>,
+    pub distance_postfix_bits: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub num_direct_distance_codes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub distance_postfix_mask: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub num_dist_htrees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub dist_context_map: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub literal_htree: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a>,
+    pub dist_htree_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub repeat_code_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub prev_code_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub copy_length: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub distance_code: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub rb_roundtrips: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.size_t.html" title="type libc::size_t">size_t</a>,
+    pub partial_pos_out: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.size_t.html" title="type libc::size_t">size_t</a>,
+    pub symbol: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub repeat: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub space: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub table: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 32]</a>,
+    pub symbol_lists: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a>,
+    pub symbols_lists_array: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 720]</a>,
+    pub next_symbol: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 32]</a>,
+    pub code_length_code_lengths: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 18]</a>,
+    pub code_length_histo: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 16]</a>,
+    pub htree_index: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub next: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a>,
+    pub context_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub max_run_length_prefix: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub code: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub context_map_table: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 646]</a>,
+    pub mtf_upper_bound: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub mtf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 260]</a>,
+    pub custom_dict: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub custom_dict_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a>,
+    pub substate_metablock_header: <a class="type" href="../brotli_sys/type.BrotliRunningMetablockHeaderState.html" title="type brotli_sys::BrotliRunningMetablockHeaderState">BrotliRunningMetablockHeaderState</a>,
+    pub substate_tree_group: <a class="type" href="../brotli_sys/type.BrotliRunningTreeGroupState.html" title="type brotli_sys::BrotliRunningTreeGroupState">BrotliRunningTreeGroupState</a>,
+    pub substate_context_map: <a class="type" href="../brotli_sys/type.BrotliRunningContextMapState.html" title="type brotli_sys::BrotliRunningContextMapState">BrotliRunningContextMapState</a>,
+    pub substate_uncompressed: <a class="type" href="../brotli_sys/type.BrotliRunningUncompressedState.html" title="type brotli_sys::BrotliRunningUncompressedState">BrotliRunningUncompressedState</a>,
+    pub substate_huffman: <a class="type" href="../brotli_sys/type.BrotliRunningHuffmanState.html" title="type brotli_sys::BrotliRunningHuffmanState">BrotliRunningHuffmanState</a>,
+    pub substate_decode_uint8: <a class="type" href="../brotli_sys/type.BrotliRunningDecodeUint8State.html" title="type brotli_sys::BrotliRunningDecodeUint8State">BrotliRunningDecodeUint8State</a>,
+    pub substate_read_block_length: <a class="type" href="../brotli_sys/type.BrotliRunningReadBlockLengthState.html" title="type brotli_sys::BrotliRunningReadBlockLengthState">BrotliRunningReadBlockLengthState</a>,
+    pub is_last_metablock: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub is_uncompressed: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub is_metadata: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub size_nibbles: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub window_bits: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub num_literal_htrees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a>,
+    pub context_map: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub context_modes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a>,
+    pub trivial_literal_contexts: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 8]</a>,
+    // some fields omitted
+}</pre><h2 class='fields'>Fields</h2><span id='structfield.state' class="structfield">
+                           <span id='state.v' class='invisible'>
+                           <code>state: <a class="type" href="../brotli_sys/type.BrotliRunningState.html" title="type brotli_sys::BrotliRunningState">BrotliRunningState</a></code>
+                           </span></span><span id='structfield.loop_counter' class="structfield">
+                           <span id='loop_counter.v' class='invisible'>
+                           <code>loop_counter: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.br' class="structfield">
+                           <span id='br.v' class='invisible'>
+                           <code>br: <a class="struct" href="../brotli_sys/struct.BrotliBitReader.html" title="struct brotli_sys::BrotliBitReader">BrotliBitReader</a></code>
+                           </span></span><span id='structfield.alloc_func' class="structfield">
+                           <span id='alloc_func.v' class='invisible'>
+                           <code>alloc_func: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../brotli_sys/type.brotli_alloc_func.html" title="type brotli_sys::brotli_alloc_func">brotli_alloc_func</a>&gt;</code>
+                           </span></span><span id='structfield.free_func' class="structfield">
+                           <span id='free_func.v' class='invisible'>
+                           <code>free_func: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../brotli_sys/type.brotli_free_func.html" title="type brotli_sys::brotli_free_func">brotli_free_func</a>&gt;</code>
+                           </span></span><span id='structfield.memory_manager_opaque' class="structfield">
+                           <span id='memory_manager_opaque.v' class='invisible'>
+                           <code>memory_manager_opaque: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="enum" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/enum.c_void.html" title="enum libc::c_void">c_void</a></code>
+                           </span></span><span id='structfield.buffer_length' class="structfield">
+                           <span id='buffer_length.v' class='invisible'>
+                           <code>buffer_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.pos' class="structfield">
+                           <span id='pos.v' class='invisible'>
+                           <code>pos: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.max_backward_distance' class="structfield">
+                           <span id='max_backward_distance.v' class='invisible'>
+                           <code>max_backward_distance: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.max_backward_distance_minus_custom_dict_size' class="structfield">
+                           <span id='max_backward_distance_minus_custom_dict_size.v' class='invisible'>
+                           <code>max_backward_distance_minus_custom_dict_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.max_distance' class="structfield">
+                           <span id='max_distance.v' class='invisible'>
+                           <code>max_distance: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.ringbuffer_size' class="structfield">
+                           <span id='ringbuffer_size.v' class='invisible'>
+                           <code>ringbuffer_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.ringbuffer_mask' class="structfield">
+                           <span id='ringbuffer_mask.v' class='invisible'>
+                           <code>ringbuffer_mask: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.dist_rb_idx' class="structfield">
+                           <span id='dist_rb_idx.v' class='invisible'>
+                           <code>dist_rb_idx: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.dist_rb' class="structfield">
+                           <span id='dist_rb.v' class='invisible'>
+                           <code>dist_rb: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 4]</a></code>
+                           </span></span><span id='structfield.error_code' class="structfield">
+                           <span id='error_code.v' class='invisible'>
+                           <code>error_code: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.sub_loop_counter' class="structfield">
+                           <span id='sub_loop_counter.v' class='invisible'>
+                           <code>sub_loop_counter: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.ringbuffer' class="structfield">
+                           <span id='ringbuffer.v' class='invisible'>
+                           <code>ringbuffer: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.ringbuffer_end' class="structfield">
+                           <span id='ringbuffer_end.v' class='invisible'>
+                           <code>ringbuffer_end: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.htree_command' class="structfield">
+                           <span id='htree_command.v' class='invisible'>
+                           <code>htree_command: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a></code>
+                           </span></span><span id='structfield.context_lookup1' class="structfield">
+                           <span id='context_lookup1.v' class='invisible'>
+                           <code>context_lookup1: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.context_lookup2' class="structfield">
+                           <span id='context_lookup2.v' class='invisible'>
+                           <code>context_lookup2: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.context_map_slice' class="structfield">
+                           <span id='context_map_slice.v' class='invisible'>
+                           <code>context_map_slice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.dist_context_map_slice' class="structfield">
+                           <span id='dist_context_map_slice.v' class='invisible'>
+                           <code>dist_context_map_slice: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.literal_hgroup' class="structfield">
+                           <span id='literal_hgroup.v' class='invisible'>
+                           <code>literal_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a></code>
+                           </span></span><span id='structfield.insert_copy_hgroup' class="structfield">
+                           <span id='insert_copy_hgroup.v' class='invisible'>
+                           <code>insert_copy_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a></code>
+                           </span></span><span id='structfield.distance_hgroup' class="structfield">
+                           <span id='distance_hgroup.v' class='invisible'>
+                           <code>distance_hgroup: <a class="struct" href="../brotli_sys/struct.HuffmanTreeGroup.html" title="struct brotli_sys::HuffmanTreeGroup">HuffmanTreeGroup</a></code>
+                           </span></span><span id='structfield.block_type_trees' class="structfield">
+                           <span id='block_type_trees.v' class='invisible'>
+                           <code>block_type_trees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a></code>
+                           </span></span><span id='structfield.block_len_trees' class="structfield">
+                           <span id='block_len_trees.v' class='invisible'>
+                           <code>block_len_trees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a></code>
+                           </span></span><span id='structfield.trivial_literal_context' class="structfield">
+                           <span id='trivial_literal_context.v' class='invisible'>
+                           <code>trivial_literal_context: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.distance_context' class="structfield">
+                           <span id='distance_context.v' class='invisible'>
+                           <code>distance_context: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.meta_block_remaining_len' class="structfield">
+                           <span id='meta_block_remaining_len.v' class='invisible'>
+                           <code>meta_block_remaining_len: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.block_length_index' class="structfield">
+                           <span id='block_length_index.v' class='invisible'>
+                           <code>block_length_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.block_length' class="structfield">
+                           <span id='block_length.v' class='invisible'>
+                           <code>block_length: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a></code>
+                           </span></span><span id='structfield.num_block_types' class="structfield">
+                           <span id='num_block_types.v' class='invisible'>
+                           <code>num_block_types: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 3]</a></code>
+                           </span></span><span id='structfield.block_type_rb' class="structfield">
+                           <span id='block_type_rb.v' class='invisible'>
+                           <code>block_type_rb: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 6]</a></code>
+                           </span></span><span id='structfield.distance_postfix_bits' class="structfield">
+                           <span id='distance_postfix_bits.v' class='invisible'>
+                           <code>distance_postfix_bits: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.num_direct_distance_codes' class="structfield">
+                           <span id='num_direct_distance_codes.v' class='invisible'>
+                           <code>num_direct_distance_codes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.distance_postfix_mask' class="structfield">
+                           <span id='distance_postfix_mask.v' class='invisible'>
+                           <code>distance_postfix_mask: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.num_dist_htrees' class="structfield">
+                           <span id='num_dist_htrees.v' class='invisible'>
+                           <code>num_dist_htrees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.dist_context_map' class="structfield">
+                           <span id='dist_context_map.v' class='invisible'>
+                           <code>dist_context_map: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.literal_htree' class="structfield">
+                           <span id='literal_htree.v' class='invisible'>
+                           <code>literal_htree: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a></code>
+                           </span></span><span id='structfield.dist_htree_index' class="structfield">
+                           <span id='dist_htree_index.v' class='invisible'>
+                           <code>dist_htree_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.repeat_code_len' class="structfield">
+                           <span id='repeat_code_len.v' class='invisible'>
+                           <code>repeat_code_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.prev_code_len' class="structfield">
+                           <span id='prev_code_len.v' class='invisible'>
+                           <code>prev_code_len: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.copy_length' class="structfield">
+                           <span id='copy_length.v' class='invisible'>
+                           <code>copy_length: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.distance_code' class="structfield">
+                           <span id='distance_code.v' class='invisible'>
+                           <code>distance_code: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.rb_roundtrips' class="structfield">
+                           <span id='rb_roundtrips.v' class='invisible'>
+                           <code>rb_roundtrips: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.size_t.html" title="type libc::size_t">size_t</a></code>
+                           </span></span><span id='structfield.partial_pos_out' class="structfield">
+                           <span id='partial_pos_out.v' class='invisible'>
+                           <code>partial_pos_out: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.size_t.html" title="type libc::size_t">size_t</a></code>
+                           </span></span><span id='structfield.symbol' class="structfield">
+                           <span id='symbol.v' class='invisible'>
+                           <code>symbol: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.repeat' class="structfield">
+                           <span id='repeat.v' class='invisible'>
+                           <code>repeat: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.space' class="structfield">
+                           <span id='space.v' class='invisible'>
+                           <code>space: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.table' class="structfield">
+                           <span id='table.v' class='invisible'>
+                           <code>table: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 32]</a></code>
+                           </span></span><span id='structfield.symbol_lists' class="structfield">
+                           <span id='symbol_lists.v' class='invisible'>
+                           <code>symbol_lists: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a></code>
+                           </span></span><span id='structfield.symbols_lists_array' class="structfield">
+                           <span id='symbols_lists_array.v' class='invisible'>
+                           <code>symbols_lists_array: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 720]</a></code>
+                           </span></span><span id='structfield.next_symbol' class="structfield">
+                           <span id='next_symbol.v' class='invisible'>
+                           <code>next_symbol: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 32]</a></code>
+                           </span></span><span id='structfield.code_length_code_lengths' class="structfield">
+                           <span id='code_length_code_lengths.v' class='invisible'>
+                           <code>code_length_code_lengths: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 18]</a></code>
+                           </span></span><span id='structfield.code_length_histo' class="structfield">
+                           <span id='code_length_histo.v' class='invisible'>
+                           <code>code_length_histo: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u16.html">u16</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 16]</a></code>
+                           </span></span><span id='structfield.htree_index' class="structfield">
+                           <span id='htree_index.v' class='invisible'>
+                           <code>htree_index: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.next' class="structfield">
+                           <span id='next.v' class='invisible'>
+                           <code>next: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a></code>
+                           </span></span><span id='structfield.context_index' class="structfield">
+                           <span id='context_index.v' class='invisible'>
+                           <code>context_index: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.max_run_length_prefix' class="structfield">
+                           <span id='max_run_length_prefix.v' class='invisible'>
+                           <code>max_run_length_prefix: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.code' class="structfield">
+                           <span id='code.v' class='invisible'>
+                           <code>code: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.context_map_table' class="structfield">
+                           <span id='context_map_table.v' class='invisible'>
+                           <code>context_map_table: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="struct" href="../brotli_sys/struct.HuffmanCode.html" title="struct brotli_sys::HuffmanCode">HuffmanCode</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 646]</a></code>
+                           </span></span><span id='structfield.mtf_upper_bound' class="structfield">
+                           <span id='mtf_upper_bound.v' class='invisible'>
+                           <code>mtf_upper_bound: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.mtf' class="structfield">
+                           <span id='mtf.v' class='invisible'>
+                           <code>mtf: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 260]</a></code>
+                           </span></span><span id='structfield.custom_dict' class="structfield">
+                           <span id='custom_dict.v' class='invisible'>
+                           <code>custom_dict: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*const </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.custom_dict_size' class="structfield">
+                           <span id='custom_dict_size.v' class='invisible'>
+                           <code>custom_dict_size: <a class="type" href="https://doc.rust-lang.org/libc/x86_64-unknown-linux-gnu/libc/type.c_int.html" title="type libc::c_int">c_int</a></code>
+                           </span></span><span id='structfield.substate_metablock_header' class="structfield">
+                           <span id='substate_metablock_header.v' class='invisible'>
+                           <code>substate_metablock_header: <a class="type" href="../brotli_sys/type.BrotliRunningMetablockHeaderState.html" title="type brotli_sys::BrotliRunningMetablockHeaderState">BrotliRunningMetablockHeaderState</a></code>
+                           </span></span><span id='structfield.substate_tree_group' class="structfield">
+                           <span id='substate_tree_group.v' class='invisible'>
+                           <code>substate_tree_group: <a class="type" href="../brotli_sys/type.BrotliRunningTreeGroupState.html" title="type brotli_sys::BrotliRunningTreeGroupState">BrotliRunningTreeGroupState</a></code>
+                           </span></span><span id='structfield.substate_context_map' class="structfield">
+                           <span id='substate_context_map.v' class='invisible'>
+                           <code>substate_context_map: <a class="type" href="../brotli_sys/type.BrotliRunningContextMapState.html" title="type brotli_sys::BrotliRunningContextMapState">BrotliRunningContextMapState</a></code>
+                           </span></span><span id='structfield.substate_uncompressed' class="structfield">
+                           <span id='substate_uncompressed.v' class='invisible'>
+                           <code>substate_uncompressed: <a class="type" href="../brotli_sys/type.BrotliRunningUncompressedState.html" title="type brotli_sys::BrotliRunningUncompressedState">BrotliRunningUncompressedState</a></code>
+                           </span></span><span id='structfield.substate_huffman' class="structfield">
+                           <span id='substate_huffman.v' class='invisible'>
+                           <code>substate_huffman: <a class="type" href="../brotli_sys/type.BrotliRunningHuffmanState.html" title="type brotli_sys::BrotliRunningHuffmanState">BrotliRunningHuffmanState</a></code>
+                           </span></span><span id='structfield.substate_decode_uint8' class="structfield">
+                           <span id='substate_decode_uint8.v' class='invisible'>
+                           <code>substate_decode_uint8: <a class="type" href="../brotli_sys/type.BrotliRunningDecodeUint8State.html" title="type brotli_sys::BrotliRunningDecodeUint8State">BrotliRunningDecodeUint8State</a></code>
+                           </span></span><span id='structfield.substate_read_block_length' class="structfield">
+                           <span id='substate_read_block_length.v' class='invisible'>
+                           <code>substate_read_block_length: <a class="type" href="../brotli_sys/type.BrotliRunningReadBlockLengthState.html" title="type brotli_sys::BrotliRunningReadBlockLengthState">BrotliRunningReadBlockLengthState</a></code>
+                           </span></span><span id='structfield.is_last_metablock' class="structfield">
+                           <span id='is_last_metablock.v' class='invisible'>
+                           <code>is_last_metablock: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.is_uncompressed' class="structfield">
+                           <span id='is_uncompressed.v' class='invisible'>
+                           <code>is_uncompressed: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.is_metadata' class="structfield">
+                           <span id='is_metadata.v' class='invisible'>
+                           <code>is_metadata: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.size_nibbles' class="structfield">
+                           <span id='size_nibbles.v' class='invisible'>
+                           <code>size_nibbles: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.window_bits' class="structfield">
+                           <span id='window_bits.v' class='invisible'>
+                           <code>window_bits: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.num_literal_htrees' class="structfield">
+                           <span id='num_literal_htrees.v' class='invisible'>
+                           <code>num_literal_htrees: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a></code>
+                           </span></span><span id='structfield.context_map' class="structfield">
+                           <span id='context_map.v' class='invisible'>
+                           <code>context_map: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.context_modes' class="structfield">
+                           <span id='context_modes.v' class='invisible'>
+                           <code>context_modes: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.pointer.html">*mut </a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a></code>
+                           </span></span><span id='structfield.trivial_literal_contexts' class="structfield">
+                           <span id='trivial_literal_contexts.v' class='invisible'>
+                           <code>trivial_literal_contexts: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u32.html">u32</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.array.html">; 8]</a></code>
+                           </span></span></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "brotli_sys";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    <script defer src="../search-index.js"></script>
+</body>
+</html>

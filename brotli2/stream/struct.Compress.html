@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Compress` struct in crate `brotli2`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Compress">
+
+    <title>brotli2::stream::Compress - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../normalize.css">
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc struct">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>brotli2</a>::<wbr><a href='index.html'>stream</a></p><script>window.sidebarCurrent = {name: 'Compress', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content">
+<h1 class='fqn'><span class='in-band'>Struct <a href='../index.html'>brotli2</a>::<wbr><a href='index.html'>stream</a>::<wbr><a class="struct" href=''>Compress</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a class='srclink' href='../../src/brotli2/stream.rs.html#27-29' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Compress { /* fields omitted */ }</pre><div class='docblock'><p>In-memory state for compressing/encoding data with brotli</p>
+<p>This stream is at the heart of the I/O encoders and is used to compress
+data.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><span class='in-band'><code>impl <a class="struct" href="../../brotli2/stream/struct.Compress.html" title="struct brotli2::stream::Compress">Compress</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/brotli2/stream.rs.html#204-391' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.new' class="method"><span id='new.v' class='invisible'><code>fn <a href='#method.new' class='fnname'>new</a>() -&gt; <a class="struct" href="../../brotli2/stream/struct.Compress.html" title="struct brotli2::stream::Compress">Compress</a></code></span></h4>
+<div class='docblock'><p>Creates a new compressor ready to encode data into brotli</p>
+</div><h4 id='method.input_block_size' class="method"><span id='input_block_size.v' class='invisible'><code>fn <a href='#method.input_block_size' class='fnname'>input_block_size</a>(&amp;self) -&gt; <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.usize.html">usize</a></code></span></h4>
+<div class='docblock'><p>Returns the maximum amount of data that can be internally buffered to
+get processed at once.</p>
+<p>Data is fed into this compressor via the <code>copy_input</code> function, and then
+it's later compressed via the <code>write_brotli_data</code> function.</p>
+</div><h4 id='method.copy_input' class="method"><span id='copy_input.v' class='invisible'><code>fn <a href='#method.copy_input' class='fnname'>copy_input</a>(&amp;mut self, input: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>)</code></span></h4>
+<div class='docblock'><p>Feeds data into this compressor.</p>
+<p>This compressor can store up to <code>self.input_block_size()</code> bytes
+internally after which the <code>compress</code> call must be made to generate all
+output of the compressor.</p>
+<p>If too much data is copied in then the next call to <code>compress</code> will
+generate an error.</p>
+</div><h4 id='method.compress' class="method"><span id='compress.v' class='invisible'><code>fn <a href='#method.compress' class='fnname'>compress</a>(&amp;mut self, last: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>, force_flush: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; <a class="enum" href="https://doc.rust-lang.org/nightly/core/result/enum.Result.html" title="enum core::result::Result">Result</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">&amp;[</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.u8.html">u8</a><a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.slice.html">]</a>, <a class="struct" href="../../brotli2/stream/struct.Error.html" title="struct brotli2::stream::Error">Error</a>&gt;</code></span></h4>
+<div class='docblock'><p>Compresses the internal data in this compressor, returning the output
+buffer of the compressed data.</p>
+<p>After data has been fed to this compressor via the <code>copy_input</code> method,
+the data is then compressed by calling this method. The <code>last</code> flag
+indicates whether this is the last block of the input (it should only
+get passed on EOF), and the <code>force_flush</code> flag indicates whether a new
+meta-block should be created to flush the internal data.</p>
+<p>Returns an error, if any, and otherwise the internal buffer which
+contains the output data of compressed information.</p>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1>
+<pre class="rust rust-example-rendered">
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">cmp</span>;
+<span class="kw">use</span> <span class="ident">brotli2</span>::<span class="ident">stream</span>::{<span class="ident">Error</span>, <span class="ident">Compress</span>, <span class="ident">decompress_buf</span>};
+
+<span class="comment">// An example of compressing `input` into the destination vector</span>
+<span class="comment">// `output`</span>
+<span class="kw">fn</span> <span class="ident">compress_vec</span>(<span class="ident">input</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>],
+                <span class="ident">output</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">u8</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">Error</span><span class="op">&gt;</span> {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">compress</span> <span class="op">=</span> <span class="ident">Compress</span>::<span class="ident">new</span>();
+    <span class="kw">for</span> <span class="ident">chunk</span> <span class="kw">in</span> <span class="ident">input</span>.<span class="ident">chunks</span>(<span class="ident">compress</span>.<span class="ident">input_block_size</span>()) {
+        <span class="ident">compress</span>.<span class="ident">copy_input</span>(<span class="ident">chunk</span>);
+        <span class="ident">output</span>.<span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span><span class="macro">try</span><span class="macro">!</span>(<span class="ident">compress</span>.<span class="ident">compress</span>(<span class="bool-val">false</span>, <span class="bool-val">false</span>)));
+    }
+    <span class="ident">output</span>.<span class="ident">extend_from_slice</span>(<span class="kw-2">&amp;</span><span class="macro">try</span><span class="macro">!</span>(<span class="ident">compress</span>.<span class="ident">compress</span>(<span class="bool-val">true</span>, <span class="bool-val">false</span>)));
+    <span class="prelude-val">Ok</span>(())
+}
+
+<span class="kw">fn</span> <span class="ident">assert_roundtrip</span>(<span class="ident">data</span>: <span class="kw-2">&amp;</span>[<span class="ident">u8</span>]) {
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">compressed</span> <span class="op">=</span> <span class="ident">Vec</span>::<span class="ident">new</span>();
+    <span class="ident">compress_vec</span>(<span class="ident">data</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">compressed</span>).<span class="ident">unwrap</span>();
+
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">decompressed</span> <span class="op">=</span> [<span class="number">0</span>; <span class="number">2048</span>];
+    <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">decompressed</span> <span class="op">=</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">decompressed</span>[..];
+    <span class="ident">decompress_buf</span>(<span class="kw-2">&amp;</span><span class="ident">compressed</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">decompressed</span>).<span class="ident">unwrap</span>();
+    <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">decompressed</span>, <span class="ident">data</span>);
+}
+
+<span class="ident">assert_roundtrip</span>(<span class="string">b&quot;Hello, World!&quot;</span>);
+<span class="ident">assert_roundtrip</span>(<span class="string">b&quot;&quot;</span>);
+<span class="ident">assert_roundtrip</span>(<span class="kw-2">&amp;</span>[<span class="number">6</span>; <span class="number">1024</span>]);</pre>
+</div><h4 id='method.set_params' class="method"><span id='set_params.v' class='invisible'><code>fn <a href='#method.set_params' class='fnname'>set_params</a>(&amp;mut self, params: &amp;<a class="struct" href="../../brotli2/stream/struct.CompressParams.html" title="struct brotli2::stream::CompressParams">CompressParams</a>)</code></span></h4>
+<div class='docblock'><p>Configure the parameters of this compression session.</p>
+<p>Note that this is likely to only successful if called before compression
+starts.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> for <a class="struct" href="../../brotli2/stream/struct.Compress.html" title="struct brotli2::stream::Compress">Compress</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/brotli2/stream.rs.html#31' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> for <a class="struct" href="../../brotli2/stream/struct.Compress.html" title="struct brotli2::stream::Compress">Compress</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/brotli2/stream.rs.html#32' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'></div><h3 class='impl'><span class='in-band'><code>impl <a class="trait" href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html" title="trait core::ops::Drop">Drop</a> for <a class="struct" href="../../brotli2/stream/struct.Compress.html" title="struct brotli2::stream::Compress">Compress</a></code></span><span class='out-of-band'><div class='ghost'></div><a class='srclink' href='../../src/brotli2/stream.rs.html#393-399' title='goto source code'>[src]</a></span></h3>
+<div class='impl-items'><h4 id='method.drop' class="method"><span id='drop.v' class='invisible'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop' class='fnname'>drop</a>(&amp;mut self)</code></span></h4>
+<div class='docblock'><p>A method called when the value goes out of scope. <a href="https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#tymethod.drop">Read more</a></p>
+</div></div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "brotli2";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>
